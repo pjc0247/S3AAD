@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>S3AAD</id>
+    <version>1.0.0</version>
+    <authors>pjc0247</authors>
+    <owners>pjc0247</owners>
+    <projectUrl>https://github.com/pjc0247/S3AAD</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>s3 as a database</description>
+    <copyright>Copyright 2017</copyright>
+    <tags>S3</tags>
+    <dependencies>
+      <dependency id="JsonFx" version="2.0.1209.2802" />
+      <dependency id="AWSSDK.S3" version="3.3.5.2" />
+    </dependencies>
+  </metadata>
+</package>
