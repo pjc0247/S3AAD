@@ -31,6 +31,12 @@ var nickname = (string)document["nickname"];
 
 * there's no API provided to delete a document. 
 
+Limitations
+----
+* No query (only supports exact key based matching)
+* Can fetch only 1 document at once
+* No atomic operations and locks
+* Cannot delete documents
 
 Concurrency
 ----
