@@ -33,7 +33,7 @@ var nickname = (string)document["nickname"];
 
 Limitations
 ----
-* No query (only supports exact key based matching)
+* No query filters (only supports exact key based matching)
 * Can fetch only 1 document at once
 * No atomic operations and locks
 * Cannot delete documents
