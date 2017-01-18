@@ -10,7 +10,7 @@ S3DB.Init("ACCESS_KEY", "ACCESS_SECRET", "ap-northeast-2");
 
 __create document__
 ```cs
-var document = S3DB.CreateDocument("my-bucket", "user-name");
+var document = S3DB.CreateDocument("my-bucket", "username");
 ```
 
 __save document__
@@ -23,7 +23,7 @@ document.Update();
 
 __find document__
 ```cs
-var document = S3DB.FindDocument("my-bucket", "user-name");
+var document = S3DB.FindDocument("my-bucket", "username");
 
 var level = (int)document["level"];
 var nickname = (string)document["nickname"];
