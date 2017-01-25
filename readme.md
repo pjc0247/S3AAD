@@ -3,17 +3,18 @@ S3AAD
 
 use `aws.s3` as a database for straightforward services.
 
+<br>
 __initialization__
 ```cs
 S3DB.Init("ACCESS_KEY", "ACCESS_SECRET", "ap-northeast-2");
 ```
 
-__create document__
+__create a document__
 ```cs
 var document = S3DB.CreateDocument("my-bucket", "username");
 ```
 
-__save document__
+__save a document__
 ```cs
 document["level"] = 1234;
 document["nickname"] = "eel";
@@ -21,7 +22,7 @@ document["nickname"] = "eel";
 document.Update();
 ```
 
-__find document__
+__find a single document__
 ```cs
 var document = S3DB.FindDocument("my-bucket", "username");
 
@@ -40,4 +41,4 @@ Limitations
 
 Concurrency
 ----
-TODO
+* 단일 document에 대해서 쓰기 작업은 원자성을 보장합니다. 작업은 항상 전부 반영되거나, 전부 반영되지 않습니다.
