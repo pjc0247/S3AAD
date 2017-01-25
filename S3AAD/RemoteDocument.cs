@@ -12,6 +12,8 @@ namespace S3AAD
 		public string key { get; private set; }
 		public Dictionary<string, object> data { get; private set; }
 
+        public bool publicRead;
+
 		public object this[string key]
 		{
 			get
@@ -32,11 +34,9 @@ namespace S3AAD
 		}
 		internal RemoteDocument(string json)
 		{
-			Console.WriteLine(json);
 			var reader = new JsonReader();
 			var _this = reader.Read<Dictionary<string, object>>(json);
 
-			Console.WriteLine(_this["data"]);
 			bucketName = ((string)_this["bucketName"]);
 			key = ((string)_this["key"]);
 			data = new Dictionary<string, object>((System.Dynamic.ExpandoObject)_this["data"]);
@@ -44,7 +44,7 @@ namespace S3AAD
 
 		public void Update()
 		{
-			S3DB.SaveDocument(bucketName, key, this);
+			S3DB.SaveDocument(bucketName, key, this, publicRead);
 		}
 		public string AsJson()
 		{

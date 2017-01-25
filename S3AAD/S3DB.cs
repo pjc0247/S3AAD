@@ -17,7 +17,7 @@ namespace S3AAD
 				accessKey, accessSecret, RegionEndpoint.GetBySystemName(regionName));
 		}
 
-		internal static bool SaveDocument(string bucketName, string key, RemoteDocument document)
+		internal static bool SaveDocument(string bucketName, string key, RemoteDocument document, bool publicRead = false)
 		{
 			if (client == null)
 				throw new InvalidOperationException("not initialized");
@@ -26,21 +26,25 @@ namespace S3AAD
 			{
 				BucketName = bucketName,
 				Key = key,
-				ContentBody = document.AsJson()
+				ContentBody = document.AsJson(),
+
+                CannedACL = publicRead ? S3CannedACL.PublicRead : S3CannedACL.NoACL
 			});
 
-			Console.WriteLine(resp.HttpStatusCode);
 			return resp.HttpStatusCode == System.Net.HttpStatusCode.OK;
 		}
 
-		public static RemoteDocument CreateDocument(string bucketName, string key)
+		public static RemoteDocument CreateDocument(string bucketName, string key, bool publicRead = false)
 		{
 			if (client == null)
 				throw new InvalidOperationException("not initialized");
 
 			try
 			{
-				var document = new RemoteDocument(bucketName, key);
+                var document = new RemoteDocument(bucketName, key)
+                {
+                    publicRead = publicRead
+                };
 
 				SaveDocument(bucketName, key, document);
 
@@ -58,7 +62,7 @@ namespace S3AAD
 				throw new InvalidOperationException("not initialized");
 
 			try
-			{
+			{ 
 				var resp = client.GetObject(bucketName, key);
 				var reader = new StreamReader(resp.ResponseStream);
 
