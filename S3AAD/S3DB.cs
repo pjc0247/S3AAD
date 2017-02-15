@@ -56,6 +56,15 @@ namespace S3AAD
                 return null;
             }
         }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException">
+        /// 지정한 key가 S3AAD 문서가 아닌 경우
+        /// </exception>
         public static RemoteDocument FindDocument(string bucketName, string key)
         {
             if (client == null)
