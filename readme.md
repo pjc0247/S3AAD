@@ -5,6 +5,7 @@ use `aws.s3` as a database for straightforward services.
 
 <br>
 __initialization__
+
 ```cs
 S3DB.Init("ACCESS_KEY", "ACCESS_SECRET", "ap-northeast-2");
 ```
